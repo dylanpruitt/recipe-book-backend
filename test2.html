@@ -1,72 +1,59 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Dorian's Mac and Cheese</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-    @media only screen and (min-width: 768px) {
-        #ingredients {
-            position: fixed;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Dorian's Mac and Cheese</title>
+    <style>
+        @media only screen and (min-width: 768px) {
+            #ingredients {
+                position: fixed;
+            }
         }
-    }
-</style>
+    </style>
 </head>
+
 <body class="w3-sand">
+    <header class="w3-container w3-amber">
+        <h2>Dorian's Mac and Cheese</h2>
+        <p>Probably my favorite recipe for mac and cheese. Takes about <b>15</b>-<b>25</b> minutes.</p>
+    </header>
 
-<div class="w3-container w3-amber">
-<h2>Dorian's Mac and Cheese</h2>
-<p>Probably my favorite recipe for mac and cheese. Takes about <b>15</b>-<b>25</b> minutes.</p>
-</div>
+    <section class="w3-row-padding w3-bottombar w3-border-black">
+        <article class="w3-third" id="ingredients">
+            <h1>Ingredients</h1>
+            <ul>
+                <li><b>1/4</b> lb pasta</li>
+                <li><b>1 1/2 oz.</b> cheese (without anti-caking agents)</li>
+                <li><b>2</b> teaspoons cornstarch</li>
+                <li>water</li>
+                <li><b>1/2</b> teaspoon salt</li>
+                <li>pepper, to taste</li>
+            </ul>
+        </article>
+        <article class="w3-twothird w3-right" id="directions">
+            <h1>Directions</h1>
+        </article>
+    </section>
+    <script>
+        const test = "In sauce pot, combine pasta, salt, and 1 1/2 cups water.\nPlace pot on oven and heat on high.\nStir pasta occasionally. When water boils, start tracking the pasta cook time.\nIn a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.\nOn a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and mix until cheese is completely covered in cornstarch.\nIf pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.\nThis is the trickiest part about this recipe - it's easy to think you need to add more water than\nyou have.\nOnce pasta is done cooking, reduce to low. Stir slurry and add to pot.\nStir pot until slurry is thick (about 1 minute).\nAdd cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).\nRemove from heat and serve with pepper..\nIn sauce pot, combine pasta, salt, and 1 1/2 cups water.\nPlace pot on oven and heat on high.\nStir pasta occasionally. When water boils, start tracking the pasta cook time.\nIn a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.\nOn a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and\nmix until cheese is completely covered in cornstarch.\nIf pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.\nThis is the trickiest part about this recipe - it's easy to think you need to add more water than\nyou have.\nOnce pasta is done cooking, reduce to low. Stir slurry and add to pot.\nStir pot until slurry is thick (about 1 minute).\nAdd cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).\nRemove from heat and serve with pepper.";
 
-<div class="w3-row-padding w3-bottombar w3-border-black">
-    <div class="w3-half" id="ingredients">
-        <h1>Ingredients</h1>
-        <ul>
-            <li><b>1/4</b> lb pasta</li>
-            <li><b>1 1/2 oz.</b> cheese (without anti-caking agents)</li>
-            <li><b>2</b> teaspoons cornstarch</li>
-            <li>water</li>
-            <li><b>1/2</b> teaspoon salt</li>
-            <li>pepper, to taste</li>
-        </ul>
-    </div>
-    <div class="w3-half w3-right">
-        <h1>Directions</h1>
-        <p>In sauce pot, combine pasta, salt, and 1 1/2 cups water.</p>
-        <p>Place pot on oven and heat on high.</p>
-        <p>Stir pasta occasionally. When water boils, start tracking the pasta cook time.</p>
-        <p>In a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.</p>
-        <p>On a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and
-            mix until cheese is completely covered in cornstarch.
-        </p>
-        <p>If pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.</p>
-        <div class="w3-panel w3-leftbar">
-            <p><i>This is the trickiest part about this recipe - it's easy to think you need to add more water than you have.
-            </i></p>
-        </div> 
-        <p>Once pasta is done cooking, reduce to low. Stir slurry and add to pot. 
-            Stir pot until slurry is thick (about 1 minute).</p>
-        <p>Add cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).</p>
-        <p>Remove from heat and serve with pepper.</p>
-        <p>In sauce pot, combine pasta, salt, and 1 1/2 cups water.</p>
-        <p>Place pot on oven and heat on high.</p>
-        <p>Stir pasta occasionally. When water boils, start tracking the pasta cook time.</p>
-        <p>In a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.</p>
-        <p>On a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and
-            mix until cheese is completely covered in cornstarch.
-        </p>
-        <p>If pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.</p>
-        <div class="w3-panel w3-leftbar">
-            <p><i>This is the trickiest part about this recipe - it's easy to think you need to add more water than you have.
-            </i></p>
-        </div> 
-        <p>Once pasta is done cooking, reduce to low. Stir slurry and add to pot. 
-            Stir pot until slurry is thick (about 1 minute).</p>
-        <p>Add cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).</p>
-        <p>Remove from heat and serve with pepper.</p>
-    </div>
-</div>
+        const parseRecipeText = (plainText) => {
+            const recipeLines = plainText.split("\n");
+            const directions  = document.getElementById("directions");
+            
+            recipeLines.forEach((line, index) => {
+                let newP = document.createElement("p");
+                newP.innerHTML = line;
 
+                directions.appendChild(newP);
+            });
+        }
+
+        parseRecipeText(test);
+    </script>
 </body>
-</html> 
+
+</html>
