@@ -34,11 +34,6 @@
     </section>
 
     <script>
-        const testRecipeName = "Dorian's Mac and Cheese";
-        const testRecipeDescription = "Probably my favorite recipe for mac and cheese. Takes about 15-25 minutes.";
-        const testRecipeText = "In sauce pot, combine pasta, salt, and 1 1/2 cups water.\nPlace pot on oven and heat on high.\nStir pasta occasionally. When water boils, start tracking the pasta cook time.\nIn a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.\nOn a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and mix until cheese is completely covered in cornstarch.\nIf pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.\nThis is the trickiest part about this recipe - it's easy to think you need to add more water than\nyou have.\nOnce pasta is done cooking, reduce to low. Stir slurry and add to pot.\nStir pot until slurry is thick (about 1 minute).\nAdd cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).\nRemove from heat and serve with pepper..\nIn sauce pot, combine pasta, salt, and 1 1/2 cups water.\nPlace pot on oven and heat on high.\nStir pasta occasionally. When water boils, start tracking the pasta cook time.\nIn a bowl, combine 1 tsp. cornstarch and 2 tbsp. cold water. Stir to form slurry mix.\nOn a cutting board, cut cheese into small pieces. Sprinkle 1 tsp. cornstarch over cheese, and\nmix until cheese is completely covered in cornstarch.\nIf pasta water is evaporating too quickly, reduce heat and add 1/2 cup hot water to pot.\nThis is the trickiest part about this recipe - it's easy to think you need to add more water than\nyou have.\nOnce pasta is done cooking, reduce to low. Stir slurry and add to pot.\nStir pot until slurry is thick (about 1 minute).\nAdd cheese mix to pot, and turn heat to medium. Stir pot until cheese mix is thick (about 1 minute).\nRemove from heat and serve with pepper.";
-        const testIngredients = ["1/4 lb pasta", "1 1/2 oz. cheese (without anti-caking agents)", "2 teaspoons cornstarch", "water", "1/2 teaspoon salt", "pepper, to taste"];
-
         const parseRecipeText = (plainText) => {
             const recipeLines = plainText.split("\n");
             const directions  = document.getElementById("directions");
@@ -65,39 +60,21 @@
             ingredients.append(ingredientList);
         }
 
-        let recipeHeader = document.getElementById("recipe-name");
-        recipeHeader.innerHTML = testRecipeName;
+        let recipeID = JSON.parse(localStorage.getItem("recipe_id"));
+        console.log(recipeID);
 
-        let recipeDescription = document.getElementById("recipe-description");
-        recipeDescription.innerHTML = testRecipeDescription;
+        if (recipeID !== null) {
+            let recipeData = getRecipeByID(recipeID);
+            let recipeHeader = document.getElementById("recipe-name");
+            recipeHeader.innerHTML = recipeData.name;
 
-        parseRecipeText(testRecipeText);
-        parseRecipeIngredients(testIngredients);
+            let recipeDescription = document.getElementById("recipe-description");
+            recipeDescription.innerHTML = recipeData.description;
+
+            parseRecipeText(recipeData.directions);
+            parseRecipeIngredients(recipeData.ingredients);
+        }
     </script>
 </body>
 
 </html>
-
-<!--
-<header class="w3-container w3-amber">
-    <h2>Dorian's Mac and Cheese</h2>
-    <p>Probably my favorite recipe for mac and cheese. Takes about <b>15</b>-<b>25</b> minutes.</p>
-</header>
-
-<section class="w3-row-padding w3-bottombar w3-border-black">
-    <article class="w3-third" id="ingredients">
-        <h1>Ingredients</h1>
-        <ul>
-            <li><b>1/4</b> lb pasta</li>
-            <li><b>1 1/2 oz.</b> cheese (without anti-caking agents)</li>
-            <li><b>2</b> teaspoons cornstarch</li>
-            <li>water</li>
-            <li><b>1/2</b> teaspoon salt</li>
-            <li>pepper, to taste</li>
-        </ul>
-    </article>
-    <article class="w3-twothird w3-right" id="directions">
-        <h1>Directions</h1>
-    </article>
-</section>
--->
