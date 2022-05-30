@@ -9,6 +9,6 @@ Eventual features:
 - Allowing users to upload/edit their own recipes
 
 ![scrsht1](https://user-images.githubusercontent.com/8081069/167322021-b4fda4c9-8ed3-4157-a8d5-acd9cf317803.PNG)
-![dd](https://user-images.githubusercontent.com/8081069/167321910-0b2346d5-c9e2-4a11-af23-4a4c2c037bb7.png)
+![mobile screenshot](https://user-images.githubusercontent.com/8081069/171063153-36fcfee8-b8ab-49ec-b82d-d48e5b67fdb5.png)
 
 Test out the app [here](https://rwd-test-drive.surge.sh/search.html)! This is only a static site, but before I get anything with databases setup, this will have the most up-to-date content.
