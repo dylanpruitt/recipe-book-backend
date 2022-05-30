@@ -5,31 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="recipes.js"></script>
     <title>Search recipes</title>
 </head>
 
 <body class="w3-sand">
     <header class="w3-container w3-amber">
-        <h2>Dorian's Mac and Cheese</h2>
-        <p>Probably my favorite recipe for mac and cheese. Takes about <b>15</b>-<b>25</b> minutes.</p>
+        <h2>Search recipes</h2>
     </header>
 
-    <section class="w3-row-padding w3-bottombar w3-border-black">
-        <article class="w3-third" id="ingredients">
-            <h1>Ingredients</h1>
-            <ul>
-                <li><b>1/4</b> lb pasta</li>
-                <li><b>1 1/2 oz.</b> cheese (without anti-caking agents)</li>
-                <li><b>2</b> teaspoons cornstarch</li>
-                <li>water</li>
-                <li><b>1/2</b> teaspoon salt</li>
-                <li>pepper, to taste</li>
-            </ul>
-        </article>
-        <article class="w3-twothird w3-right" id="directions">
-            <h1>Directions</h1>
-        </article>
+    <section class="w3-container">
+        <p>You can browse the recipe list below, or search for recipes by name here. </p>
+        <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+      
+        <table class="w3-table-all w3-margin-top" id="recipeListing">
+          <tr>
+            <th>Recipe name</th>
+          </tr>
+        </table>
     </section>
+      
+      <script>
+        const populateRecipeListing = () => {
+            recipes.forEach((recipe, index) => {
+                let tableRow = document.createElement("tr");
+                let nameListing = document.createElement("td");
+                nameListing.className = "w3-hover-khaki";
+
+                let recipeLink = document.createElement("a");
+                recipeLink.href = "recipe.html";
+                recipeLink.innerHTML = recipe.name;
+
+                recipeLink.onclick = () => {
+                    setRecipeID(recipe.id);
+                    console.log(recipe.id);
+                }
+
+                nameListing.append(recipeLink);
+                tableRow.append(nameListing);
+                
+                let recipeListing = document.getElementById("recipeListing");
+                recipeListing.append(tableRow);
+            }); 
+        }
+
+        populateRecipeListing();
+
+        function setRecipeID(id) {
+          localStorage.setItem("recipe_id", JSON.stringify(id));
+        }
+
+      function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("recipeListing");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+
+      
+      </script>
 </body>
 
 </html>
