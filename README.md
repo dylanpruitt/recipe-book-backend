@@ -11,4 +11,4 @@ Eventual features:
 ![scrsht1](https://user-images.githubusercontent.com/8081069/167322021-b4fda4c9-8ed3-4157-a8d5-acd9cf317803.PNG)
 ![dd](https://user-images.githubusercontent.com/8081069/167321910-0b2346d5-c9e2-4a11-af23-4a4c2c037bb7.png)
 
-Test out the app [here](https://rwd-test-drive.surge.sh/test2.html)! This is only a static site, but before I get anything with databases setup, this will have the most up-to-date content.
+Test out the app [here](https://rwd-test-drive.surge.sh/search.html)! This is only a static site, but before I get anything with databases setup, this will have the most up-to-date content.
