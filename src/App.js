@@ -15,13 +15,6 @@ const testDirections = [
   { value: "Paprika" },
 ];
 
-import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-var socket = io();
-
-socket.on('recipe query', function (msg) {
-  console.log(msg);
-});
-
 function App() {
   return (
     <div className="App">
