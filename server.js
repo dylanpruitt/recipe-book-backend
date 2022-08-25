@@ -25,7 +25,8 @@ io.on('connection', async (socket) => {
   });
 });
 
-app.use((req, res) => res.render(path.join(__dirname, "src/index")));
+app.set('view engine', 'ejs')
+  .use((req, res) => res.render(path.join(__dirname, "src/index.js")));
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
