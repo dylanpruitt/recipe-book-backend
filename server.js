@@ -25,7 +25,7 @@ io.on('connection', async (socket) => {
   });
 });
 
-app.use((req, res) => res.render(path.join(__dirname, "public/index.html")));
+app.use((req, res) => res.render(path.join(__dirname, "src/index")));
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
