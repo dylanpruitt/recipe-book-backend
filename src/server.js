@@ -24,6 +24,8 @@ io.on('connection', async (socket) => {
   });
 });
 
+app.use((req, res) => res.sendFile(path.join(__dirname, "index.js")));
+
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 async function getQuery(query) {

@@ -4,8 +4,8 @@ import Ingredient from './Ingredient.js';
 class IngredientContainer extends React.Component {
   render() {
     const ingredients = this.props.ingredients;
-    const listItems = ingredients.map((item) => {
-      return <Ingredient value={item.value} />;
+    const listItems = ingredients.map((item, index) => {
+      return <Ingredient key={index} value={item.value} />;
     });
     return (
       <article className="w3-half">
