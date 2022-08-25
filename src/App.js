@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
+import DirectionContainer from './components/DirectionContainer.js';
+import IngredientContainer from './components/IngredientContainer.js';
+import RecipeHeader from './components/RecipeHeader.js';
 import './App.css';
+import './w3.css';
+
+const testIngredients = [
+  { value: "Garlic" },
+  { value: "Paprika" },
+];
+
+const testDirections = [
+  { value: "Garlic" },
+  { value: "Paprika" },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RecipeHeader name="test" description="test" />
+      <section className="w3-row-padding">
+        <IngredientContainer ingredients={testIngredients} />
+        <DirectionContainer  directions={testDirections} />
+      </section>
     </div>
   );
 }
