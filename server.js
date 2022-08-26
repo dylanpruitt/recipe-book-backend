@@ -15,7 +15,7 @@ const pool = new Pool({
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/src/index.html');
 });
 
 io.on('connection', async (socket) => {
