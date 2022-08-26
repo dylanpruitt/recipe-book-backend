@@ -15,6 +15,7 @@ const pool = new Pool({
 });
 
 app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/src/index.js');
   res.sendFile(__dirname + '/src/index.html');
 });
 
