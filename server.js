@@ -4,7 +4,6 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const path = require("path");
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
@@ -13,6 +12,10 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false
   }
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', async (socket) => {
@@ -24,9 +27,6 @@ io.on('connection', async (socket) => {
     console.log('user disconnected');
   });
 });
-
-app.set('view engine', 'ejs')
-  .use((req, res) => res.render(path.join(__dirname, "src/index.js")));
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
