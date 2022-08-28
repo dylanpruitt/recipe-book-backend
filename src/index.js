@@ -3,13 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import io from "socket.io-client";
-
-var socket = io('http://localhost:3001');
-
-socket.on('recipe query', function (msg) {
-  console.log(msg);
-});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
