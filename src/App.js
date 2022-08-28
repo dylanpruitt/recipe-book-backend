@@ -29,6 +29,13 @@ var description = " ";
 function parseRecipeData (recipe) {
   title       = recipe.name;
   description = recipe.description;
+  
+  testIngredients = recipe.ingredients.map((item) => {
+    return {value: item};
+  });
+  testDirections = recipe.directions.map((item) => {
+    return {value: item};
+  });
 }
 
 function App() {
