@@ -28,9 +28,6 @@ app.get('/', (req, res) => {
 io.on('connection', async (socket) => {
   const queryResults = await getQuery('SELECT * FROM recipes');
   io.to(socket.id).emit('recipe query', queryResults);
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
 });
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));

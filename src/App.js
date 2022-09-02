@@ -4,54 +4,74 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Recipe from './pages/Recipe';
 import Layout from './pages/Layout';
+import Search from './pages/Search';
+import Upload from './pages/Upload';
 import NoPage from './pages/NoPage';
 import './App.css';
 import './w3.css';
 
-var socket = io('http://localhost:3001');
-
-socket.on('recipe query', function (query) {
-  console.log(query.results[0]);
-  parseRecipeData(query.results[0]);
-});
-
-var testIngredients = [
-  { value: "Garlic" },
-  { value: "Paprika" },
-];
-
-var testDirections = [
-  { value: "Garlic" },
-  { value: "Paprika" },
-];
-
-var recipeID = 1;
-var title = "John";
-var description = "";
+var socket;
+var recipes = [];
 
 function parseRecipeData(recipe) {
-  title = recipe.name;
-  description = recipe.description;
+  let parsedObj = {
+    title: recipe.name,
+    description: recipe.description,
+    ingredients: recipe.ingredients,
+    directions: recipe.diretions,
+  };
 
-  testIngredients = recipe.ingredients.map((item) => {
+  parsedObj.ingredients = recipe.ingredients.map((item) => {
     return { value: item };
   });
-  testDirections = recipe.directions.map((item) => {
+  parsedObj.directions = recipe.directions.map((item) => {
     return { value: item };
   });
+
+  return parsedObj;
 }
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Recipe title={title} description={description} ingredients={testIngredients} directions={testDirections} />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadedRecipes: [
+        {
+          title: "test",
+          description: "test",
+          ingredients: [],
+          directions: []
+        }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    const thisScope = this;
+    socket = io('http://localhost:3001');
+
+    socket.on('recipe query', function (query) {
+      recipes = query.results.map(i => parseRecipeData(i));
+      console.log("Updated recipes");
+      thisScope.setState({ loadedRecipes: recipes });
+    });
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Recipe recipes={this.state.loadedRecipes} />}
+            />
+            <Route path="/Search" element={<Search />} />
+            <Route path="/Upload" element={<Upload />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
