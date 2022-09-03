@@ -21,13 +21,25 @@ const pool = new Pool({
   }
 });
 
+var numRecipes = 0;
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/build/index.html');
 });
 
 io.on('connection', async (socket) => {
-  const queryResults = await getQuery('SELECT * FROM recipes');
+  var queryResults = await getQuery('SELECT * FROM recipes');
+  numRecipes = queryResults.results.length;
   io.to(socket.id).emit('recipe query', queryResults);
+
+  socket.on("database submission", (item) => {
+    console.log("SUBMISSION");
+    console.log(item);
+    submitToDatabase(item);
+
+    queryResults.results.push(item);
+    socket.emit('recipe query', queryResults);
+  })
 });
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
@@ -36,6 +48,21 @@ async function getQuery(query) {
   try {
     const client = await pool.connect();
     const result = await client.query(query);
+    const results = { 'results': (result) ? result.rows : null };
+    client.release();
+    return results;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function submitToDatabase(item) {
+  try {
+    const text = 'INSERT INTO recipes(id, name, description, ingredients, directions) VALUES($1, $2, $3, $4, $5)'
+    const values = [numRecipes + 1, item.title, item.description, item.ingredients, item.directions];
+
+    const client = await pool.connect();
+    const result = await client.query(text, values);
     const results = { 'results': (result) ? result.rows : null };
     client.release();
     return results;

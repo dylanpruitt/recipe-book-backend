@@ -8,6 +8,9 @@ function RecipeLink(props) {
                     {props.name}
                 </Link>
             </td>
+            <td>
+                {props.description}
+            </td>
         </tr>
     );
 }

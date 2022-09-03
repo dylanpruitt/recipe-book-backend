@@ -1,12 +1,9 @@
-import React from 'react';
 import ResultsTable from '../components/ResultsTable';
 
-class Search extends React.Component {
-    render() {
-        return (
-            <ResultsTable />
-        );
-    }
+function Search(props) {
+    return (
+        <ResultsTable recipes={props.recipes} />
+    );
 }
 
 export default Search;

@@ -62,10 +62,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Recipe recipes={this.state.loadedRecipes} />}
-            />
-            <Route path="/Search" element={<Search />} />
-            <Route path="/Upload" element={<Upload />} />
+            <Route index element={<Recipe recipes={this.state.loadedRecipes} />} />
+            <Route path="/Search" element={<Search recipes={this.state.loadedRecipes} />} />
+            <Route path="/Upload" element={<Upload socket={socket} />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
