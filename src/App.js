@@ -42,8 +42,11 @@ class App extends React.Component {
           ingredients: [],
           directions: []
         }
-      ]
+      ],
+      recipeIndex: 0,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -57,13 +60,18 @@ class App extends React.Component {
     });
   }
 
+  handleClick(i) {
+    this.setState({ recipeIndex: i });
+    console.log(this.state.recipeIndex);
+  }
+
   render() {
     return (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Recipe recipes={this.state.loadedRecipes} />} />
-            <Route path="/Search" element={<Search recipes={this.state.loadedRecipes} />} />
+            <Route index element={<Recipe recipes={this.state.loadedRecipes} index={this.state.recipeIndex} />} />
+            <Route path="/Search" element={<Search recipes={this.state.loadedRecipes} onClick={this.handleClick} />} />
             <Route path="/Upload" element={<Upload socket={socket} />} />
             <Route path="*" element={<NoPage />} />
           </Route>

@@ -3,7 +3,7 @@ import RecipeLink from "./RecipeLink";
 function ResultsTable(props) {
     const items = props.recipes;
     const listRecipes = items.map((item, index) => {
-        return <RecipeLink key={index} name={item.title} description={item.description} />;
+        return <RecipeLink key={index} name={item.title} description={item.description} onClick={() => props.onClick(index)} />;
     });
 
     return (

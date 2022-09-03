@@ -4,7 +4,7 @@ function RecipeLink(props) {
     return (
         <tr className="w3-hover-khaki">
             <td>
-                <Link to="/">
+                <Link to="/" onClick={props.onClick}>
                     {props.name}
                 </Link>
             </td>

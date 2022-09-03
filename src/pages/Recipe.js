@@ -4,7 +4,9 @@ import IngredientContainer from '.././components/IngredientContainer.js';
 import RecipeHeader from '.././components/RecipeHeader.js';
 
 function Recipe(props) {
-    const recipe = props.recipes[0];
+    const index  = props.index;
+    const recipe = props.recipes[index];
+    
     var title = recipe.title;
     var description = recipe.description;
     var ingredients = recipe.ingredients;
