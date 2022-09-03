@@ -4,7 +4,7 @@ class Upload extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: " ",
+            name: " ",
             description: " ",
             ingredients: ["test", "uranium-238"],
             directions: ["Heat oven to 900 *F.", "test"]
@@ -37,8 +37,8 @@ class Upload extends React.Component {
                 <label>
                     Name:
                     <input type="text"
-                        name="title"
-                        value={this.state.title}
+                        name="name"
+                        value={this.state.name}
                         onChange={this.handleInputChange} />
                 </label>
                 <br />

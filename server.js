@@ -59,7 +59,7 @@ async function getQuery(query) {
 async function submitToDatabase(item) {
   try {
     const text = 'INSERT INTO recipes(id, name, description, ingredients, directions) VALUES($1, $2, $3, $4, $5)'
-    const values = [numRecipes + 1, item.title, item.description, item.ingredients, item.directions];
+    const values = [numRecipes + 1, item.name, item.description, item.ingredients, item.directions];
 
     const client = await pool.connect();
     const result = await client.query(text, values);
