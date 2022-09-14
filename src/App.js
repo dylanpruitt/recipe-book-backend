@@ -62,7 +62,6 @@ class App extends React.Component {
 
   handleClick(i) {
     this.setState({ recipeIndex: i });
-    console.log(this.state.recipeIndex);
   }
 
   render() {

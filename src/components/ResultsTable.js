@@ -4,6 +4,8 @@ function ResultsTable(props) {
     const items = props.recipes;
     const listRecipes = items.map((item, index) => {
         return <RecipeLink key={index} name={item.title} description={item.description} onClick={() => props.onClick(index)} />;
+    }).filter((item) => {
+        return item.props.name.toLowerCase().includes(props.filter.toLowerCase())
     });
 
     return (
