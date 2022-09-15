@@ -44,9 +44,11 @@ class App extends React.Component {
         }
       ],
       recipeIndex: 0,
+      uploadStatus: 'UNUSED'
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.setStatusPending = this.setStatusPending.bind(this);
   }
 
   componentDidMount() {
@@ -58,10 +60,17 @@ class App extends React.Component {
       console.log("Updated recipes");
       thisScope.setState({ loadedRecipes: recipes });
     });
+    socket.on('upload status', function (status) {
+      thisScope.setState({ uploadStatus: status });
+    });
   }
 
   handleClick(i) {
     this.setState({ recipeIndex: i });
+  }
+
+  setStatusPending() {
+    this.setState({ uploadStatus: 'PENDING' });
   }
 
   render() {
@@ -71,7 +80,7 @@ class App extends React.Component {
           <Route path="/" element={<Layout />}>
             <Route index element={<Recipe recipes={this.state.loadedRecipes} index={this.state.recipeIndex} />} />
             <Route path="/Search" element={<Search recipes={this.state.loadedRecipes} onClick={this.handleClick} />} />
-            <Route path="/Upload" element={<Upload socket={socket} />} />
+            <Route path="/Upload" element={<Upload socket={socket} status={this.state.uploadStatus} update={this.setStatusPending} />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

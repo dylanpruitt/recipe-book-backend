@@ -14,7 +14,11 @@ class InputFilter extends React.Component {
         const filter = this.props.filter;
 
         return (
-            <input className="w3-input w3-border w3-padding" type="text" value={filter} onChange={this.handleChange}></input>
+            <input className="w3-input w3-border w3-padding" type="text"
+                value={filter}
+                onChange={this.handleChange} 
+                placeholder="Search for recipes here." >
+            </input>
         );
     }
 }

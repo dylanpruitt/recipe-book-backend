@@ -28,10 +28,23 @@ class Upload extends React.Component {
         console.log("SUBMIT");
         console.log(this.state);
         event.preventDefault();
+
+        this.props.update();
         this.props.socket.emit("database submission", this.state);
     }
 
     render() {
+        const status = this.props.status;
+        var   statusText = <p></p>;
+
+        if (status === 'SUCCESS') {
+            statusText = <p>SUCCESS!!</p>;
+        } else if (status === 'ERROR') {
+            statusText = <p>Error</p>;
+        } else if (status === 'PENDING') {
+            statusText = <p>Submitting...</p>;
+        }
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
@@ -50,6 +63,7 @@ class Upload extends React.Component {
                         onChange={this.handleInputChange} />
                 </label>
                 <input type="submit" value="Submit" />
+                {statusText}
             </form>
         );
     }

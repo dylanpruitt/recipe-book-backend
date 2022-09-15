@@ -32,17 +32,32 @@ io.on('connection', async (socket) => {
   numRecipes = queryResults.results.length;
   io.to(socket.id).emit('recipe query', queryResults);
 
-  socket.on("database submission", (item) => {
-    console.log("SUBMISSION");
-    console.log(item);
-    submitToDatabase(item);
-
-    queryResults.results.push(item);
-    socket.emit('recipe query', queryResults);
-  })
+  socket.on("database submission", (item) => { handleSubmission(socket, item) });
 });
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+async function handleSubmission(socket, item) {
+  console.log("Database submission:");
+    console.log(item);
+    
+    const results = await submitToDatabase(item);
+    console.log(results);
+    if (results != null) {
+      addRecipeToListing(item, socket);
+      io.to(socket.id).emit('upload status', 'SUCCESS');
+    } else {
+      io.to(socket.id).emit('upload status', 'ERROR');
+    }
+}
+
+async function addRecipeToListing(item, socket) {
+  var queryResults = await getQuery('SELECT * FROM recipes');
+  queryResults.results.push(item);
+  numRecipes++;
+
+  socket.emit('recipe query', queryResults);
+}
 
 async function getQuery(query) {
   try {
