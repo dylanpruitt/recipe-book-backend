@@ -25,24 +25,45 @@ class Upload extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log("SUBMIT");
-        console.log(this.state);
         event.preventDefault();
+        this.props.update('PENDING');
 
-        this.props.update();
-        this.props.socket.emit("database submission", this.state);
+        if (this.stateIsValid()) {
+            console.log(this.state);
+
+            this.props.socket.emit("database submission", this.state);
+        } else {
+            this.props.update('ERROR');
+        }
+        
+    }
+
+    stateIsValid() {
+        var name = this.state.name;
+        var desc = this.state.description;
+        var ingredients = this.state.ingredients;
+        var directions = this.state.directions;
+
+        var nameValid = false, descValid = false, ingredientsValid = false, directionsValid = false;
+
+        if (typeof name === "string" && name.trim().length > 0) { nameValid = true; }
+        if (typeof desc === "string" && desc.trim().length > 0) { descValid = true; }
+        if (ingredients.length > 0) { ingredientsValid = true; }
+        if (directions.length > 0) { directionsValid = true; }
+
+        return nameValid && descValid && ingredientsValid && directionsValid;
     }
 
     render() {
         const status = this.props.status;
-        var   statusText = <p></p>;
+        var statusText = null;
 
         if (status === 'SUCCESS') {
-            statusText = <p>SUCCESS!!</p>;
+            statusText = <p className="w3-panel w3-green">Upload successful.</p>;
         } else if (status === 'ERROR') {
-            statusText = <p>Error</p>;
+            statusText = <p className="w3-panel w3-red">Error uploading.</p>;
         } else if (status === 'PENDING') {
-            statusText = <p>Submitting...</p>;
+            statusText = <p className="w3-panel w3-blue">Submitting...</p>;
         }
 
         return (
@@ -62,6 +83,7 @@ class Upload extends React.Component {
                         value={this.state.description}
                         onChange={this.handleInputChange} />
                 </label>
+
                 <input type="submit" value="Submit" />
                 {statusText}
             </form>
