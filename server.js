@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express();
 const http = require('http');
@@ -10,12 +11,9 @@ const io = new Server(server, {
 });
 const PORT = process.env.PORT || 3001
 
-const test = "postgres://kfdkgxddajedul:3f1f7b0aa0a1ea0197f6c8b1c8733094ba19ab3ca2ab5f4a26fee5f027729253@ec2-34-234-240-121.compute-1.amazonaws.com:5432/dbm7ioqi20c60o"
-console.log("URL : " + process.env.DATABASE_URL)
-
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: test,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
