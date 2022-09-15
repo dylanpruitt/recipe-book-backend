@@ -17,10 +17,15 @@ class Search extends React.Component {
     render() {
         const filter = this.state.filter;
         return (
-            <section className="w3-padding">
-                <InputFilter filter={filter} handleChange={this.handleChange} />
-                <ResultsTable recipes={this.props.recipes} onClick={this.props.onClick} filter={filter} />
-            </section>
+            <article>
+                <header className="w3-container w3-amber">
+                    <h2>Search recipes</h2>
+                </header>
+                <section className="w3-padding">
+                    <InputFilter filter={filter} handleChange={this.handleChange} />
+                    <ResultsTable recipes={this.props.recipes} onClick={this.props.onClick} filter={filter} />
+                </section>
+            </article>
         );
     }
 }
