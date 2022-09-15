@@ -12,6 +12,8 @@ class Upload extends React.Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeIngredient = this.removeIngredient.bind(this);
+        this.addIngredient = this.addIngredient.bind(this);
     }
 
     handleInputChange(event) {
@@ -35,7 +37,7 @@ class Upload extends React.Component {
         } else {
             this.props.update('ERROR');
         }
-        
+
     }
 
     stateIsValid() {
@@ -54,6 +56,18 @@ class Upload extends React.Component {
         return nameValid && descValid && ingredientsValid && directionsValid;
     }
 
+    removeIngredient(i) {
+        var temp = this.state.ingredients.slice();
+        temp.splice(i, 1);
+        this.setState({ ingredients: temp });
+    }
+
+    addIngredient(item) {
+        var temp = this.state.ingredients.slice();
+        temp.push(item);
+        this.setState({ ingredients: temp });
+    }
+
     render() {
         const status = this.props.status;
         var statusText = null;
@@ -67,7 +81,7 @@ class Upload extends React.Component {
         }
 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <article>
                 <label>
                     Name:
                     <input type="text"
@@ -83,12 +97,39 @@ class Upload extends React.Component {
                         value={this.state.description}
                         onChange={this.handleInputChange} />
                 </label>
-
-                <input type="submit" value="Submit" />
+                <IngredientContainer ingredients={this.state.ingredients}
+                    remove={this.removeIngredient}
+                    add={this.addIngredient} />
+                <form onSubmit={this.handleSubmit}>
+                    <input type="submit" value="Submit" />
+                </form>
                 {statusText}
-            </form>
+            </article>
+
         );
     }
+}
+
+function IngredientContainer(props) {
+    const items = props.ingredients.map((item, index) => {
+        return <Ingredient key={index} name={item} onClick={() => props.remove(index)} />;
+    });
+
+    return (
+        <section>
+            <p>Ingredients:</p>
+            <ul>{items}</ul>
+            <button onClick={() => props.add("T")}>Add new</button>
+        </section>
+    );
+}
+
+function Ingredient(props) {
+    return (
+        <section>
+            <li>{props.name}</li><button onClick={props.onClick}>X</button>
+        </section>
+    );
 }
 
 export default Upload;
