@@ -19,9 +19,6 @@
 .env.production.local
 .env
 
-# w3.css
-w3.css
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
