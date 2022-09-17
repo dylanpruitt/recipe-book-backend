@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "https://dpruitt-recipes-frontend.herokuapp.com/",
+    origin: "https://dpruitt-recipes-frontend.herokuapp.com",
   }
 });
 const PORT = process.env.PORT || 3001
@@ -22,7 +22,7 @@ const pool = new Pool({
 var numRecipes = 0;
 
 app.get('/', (req, res) => {
-  //res.sendFile(__dirname + '/build/index.html');
+  res.sendFile(__dirname + '/build/index.html');
 });
 
 io.on('connection', async (socket) => {
