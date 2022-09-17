@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
-    origin: "https://dpruitt-recipes-backend.herokuapp.com/",
+    origin: "https://dpruitt-recipes-frontend.herokuapp.com/",
   }
 });
 const PORT = process.env.PORT || 3001
