@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', async (socket) => {
+  console.log("Connection started.");
   var queryResults = await getQuery('SELECT * FROM recipes');
   numRecipes = queryResults.results.length;
   io.to(socket.id).emit('recipe query', queryResults);
