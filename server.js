@@ -22,7 +22,7 @@ const pool = new Pool({
 var numRecipes = 0;
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/build/index.html');
+  //res.sendFile(__dirname + '/build/index.html');
 });
 
 io.on('connection', async (socket) => {
