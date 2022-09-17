@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Recipe from './pages/Recipe';
 import Layout from './pages/Layout';
 import Search from './pages/Search';
+import About from './pages/About';
 import Upload from './pages/Upload';
 import NoPage from './pages/NoPage';
 import './App.css';
@@ -86,6 +87,7 @@ class App extends React.Component {
               update={this.updateStatus} 
               setRecipeIndex={this.handleClick} />} 
               />
+            <Route path="/About" element={<About />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

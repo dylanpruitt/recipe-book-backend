@@ -8,8 +8,8 @@ class Upload extends React.Component {
         this.state = {
             name: " ",
             description: " ",
-            ingredients: ["test", "uranium-238"],
-            directions: ["Heat oven to 900 *F.", "test"]
+            ingredients: [],
+            directions: []
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -101,31 +101,33 @@ class Upload extends React.Component {
                 <header className="w3-container w3-amber">
                     <h2>Upload recipes</h2>
                 </header>
-                <label>
-                    Name:
-                    <input type="text"
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    Description:
+                <section className="w3-container w3-padding">
+                    <p>Name:</p>
+                        <input type="text"
+                            name="name"
+                            className="w3-input w3-border"
+                            value={this.state.name}
+                            onChange={this.handleInputChange} />
+                    <br />
+                    <p>Description:</p>
                     <textarea
                         name="description"
+                        className="w3-input w3-border"
                         value={this.state.description}
                         onChange={this.handleInputChange} />
-                </label>
-                <IngredientList ingredients={this.state.ingredients}
-                    remove={this.removeIngredient}
-                    add={this.addIngredient} />
-                <DirectionList directions={this.state.directions}
-                    remove={this.removeDirection}
-                    add={this.addDirection} />
-                <form onSubmit={this.handleSubmit}>
-                    <input type="submit" value="Submit" />
-                </form>
-                {statusText}
+                    <IngredientList ingredients={this.state.ingredients}
+                        remove={this.removeIngredient}
+                        add={this.addIngredient} />
+                    <DirectionList directions={this.state.directions}
+                        remove={this.removeDirection}
+                        add={this.addDirection} />
+                    <form onSubmit={this.handleSubmit}>
+                        <br />
+                        <br />
+                        <input type="submit" value="Submit" />
+                    </form>
+                    {statusText}
+                </section>
             </article>
 
         );
