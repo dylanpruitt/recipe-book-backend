@@ -52,6 +52,7 @@ async function handleSubmission(socket, item) {
     console.log(results);
     if (results != null) {
       addRecipeToListing(item, socket);
+      console.log(UploadStatus.SUCCESS);
       io.to(socket.id).emit('upload status', UploadStatus.SUCCESS);
     } else {
       io.to(socket.id).emit('upload status', UploadStatus.ERROR);
