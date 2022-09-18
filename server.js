@@ -19,6 +19,8 @@ const pool = new Pool({
   }
 });
 
+import UploadStatus from './src/utils/UploadStatus';
+
 var numRecipes = 0;
 
 app.get('/', (req, res) => {
@@ -44,9 +46,9 @@ async function handleSubmission(socket, item) {
     console.log(results);
     if (results != null) {
       addRecipeToListing(item, socket);
-      io.to(socket.id).emit('upload status', 'SUCCESS');
+      io.to(socket.id).emit('upload status', UploadStatus.SUCCESS);
     } else {
-      io.to(socket.id).emit('upload status', 'ERROR');
+      io.to(socket.id).emit('upload status', UploadStatus.ERROR);
     }
 }
 
