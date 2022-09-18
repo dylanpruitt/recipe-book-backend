@@ -19,14 +19,6 @@ const pool = new Pool({
   }
 });
 
-const UploadStatus = {
-  UNUSED: Symbol("unused"),
-  PENDING: Symbol("pending"),
-  SUCCESS: Symbol("success"),
-  ERROR: Symbol("error"),
-};
-Object.freeze(UploadStatus);
-
 var numRecipes = 0;
 
 app.get('/', (req, res) => {
@@ -52,9 +44,9 @@ async function handleSubmission(socket, item) {
     console.log(results);
     if (results != null) {
       addRecipeToListing(item, socket);
-      io.to(socket.id).emit('upload status', Symbol.keyFor(UploadStatus.SUCCESS));
+      io.to(socket.id).emit('upload status', "success");
     } else {
-      io.to(socket.id).emit('upload status', Symbol.keyFor(UploadStatus.ERROR));
+      io.to(socket.id).emit('upload status', "error");
     }
 }
 
