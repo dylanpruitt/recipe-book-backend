@@ -10,7 +10,6 @@ const io = new Server(server, {
   }
 });
 const PORT = process.env.PORT || 3001
-const UploadStatus = require('./src/utils/UploadStatus');
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -19,6 +18,14 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+
+const UploadStatus = {
+  UNUSED: Symbol("unused"),
+  PENDING: Symbol("pending"),
+  SUCCESS: Symbol("success"),
+  ERROR: Symbol("error"),
+};
+Object.freeze(UploadStatus);
 
 var numRecipes = 0;
 
