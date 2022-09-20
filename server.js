@@ -43,7 +43,6 @@ async function handleSubmission(socket, item) {
   const results = await submitToDatabase(item);
   console.log(results);
   if (results != null) {
-    addRecipeToListing(item, socket);
     var queryResults = await getQuery('SELECT * FROM recipes');
     numRecipes++;
     socket.emit('recipe query', queryResults);
