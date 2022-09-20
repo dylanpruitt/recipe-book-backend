@@ -52,7 +52,7 @@ async function handleSubmission(socket, item) {
 
 async function addRecipeToListing(item, socket) {
   var queryResults = await getQuery('SELECT * FROM recipes');
-  queryResults.results.push(item);
+  //queryResults.results.push(item);
   numRecipes++;
 
   socket.emit('recipe query', queryResults);
