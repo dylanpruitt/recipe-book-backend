@@ -2,13 +2,12 @@
 
 # RECIPE BOOK (thinking of a better title)
 
-I wanted to create a web app that I can use from my laptop and phone as a recipe book, to get experience with responsive web design.
+A simple recipe book, allowing users to search and upload recipes.
 
-Eventual features:
-- Responsive web design optimized for mobile
-- Allowing users to upload/edit their own recipes
+Preview of recipe book on laptop:
+![image](https://user-images.githubusercontent.com/8081069/191542494-2422f0c5-e83c-41bb-a7e5-2b705d8a5bb2.png)
 
-![scrsht1](https://user-images.githubusercontent.com/8081069/167322021-b4fda4c9-8ed3-4157-a8d5-acd9cf317803.PNG)
-![mobile screenshot](https://user-images.githubusercontent.com/8081069/171063153-36fcfee8-b8ab-49ec-b82d-d48e5b67fdb5.png)
+Preview of recipe book on mobile phone:
+![mobile-screenshot](https://user-images.githubusercontent.com/8081069/191542838-c54c65fd-f7ee-4f49-be03-d8dfe806b715.png)
 
-Test out the app [here](https://rwd-test-drive.surge.sh/search.html)! This is only a static site, but before I get anything with databases setup, this will have the most up-to-date content.
+Test out the app [here](https://dpruitt-recipes-frontend.herokuapp.com/)! The recipe book app is finally live, and I would love to hear your feedback about it!
